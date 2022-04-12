@@ -26,13 +26,21 @@ export class BooksService {
 
   // get all books
   async findAllBooks() {
-    return [
-      {
-        book: 'start with why',
-      },
-      {
-        book: 'start with why',
-      },
-    ];
+    // get all books from elastic
+    try {
+      const { hits } = await this.elasticsearchService.search({
+        filter_path: ['hits.hits._source'],
+      });
+      //delete first element _source
+      hits.hits.shift();
+
+      const books = hits.hits.map((book) => {
+        return book['_source'];
+      });
+
+      return books;
+    } catch (error) {
+      throw error;
+    }
   }
 }

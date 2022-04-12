@@ -19,9 +19,8 @@ import { BooksService } from './books.service';
       }),
       inject: [ConfigService],
     }),
-    ConfigService,
   ],
-  providers: [BooksService],
+  providers: [BooksService], 
   exports: [ElasticsearchModule],
 })
 export class BooksModule {}
