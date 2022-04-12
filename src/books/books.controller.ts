@@ -6,8 +6,15 @@ export class BooksController {
   constructor(private bookService: BooksService) {}
 
   @Get('')
-  test() {
-      this.bookService.getDataTest()
-    return { name: 'hello' };
+  getAll() {
+    return this.bookService.findAllBooks();
   }
+
+  @Get('onebook')
+  getbook() {
+    const bookname = 'test';
+    return this.bookService.findOneBook(bookname);
+  }
+
+ 
 }
