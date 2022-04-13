@@ -26,6 +26,8 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/passport": "^8.2.1",
     "@nestjs/platform-express": "^8.0.0",
+    "@prisma/client": "^3.12.0",
+    "argon2": "^0.28.5",
     "passport-saml": "^3.2.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
