@@ -7,6 +7,7 @@ import {
   Res,
   UseGuards,
 } from '@nestjs/common';
+import { AuthDto } from 'src/dto';
 
 import { AuthService } from './auth.service';
 import { GoogleGuard } from './guard';
@@ -24,12 +25,13 @@ export class AuthController {
   @UseGuards(GoogleGuard)
   googleLoginCallback(@Req() req, @Res() res) {
     // handles the Google OAuth2 callback
-    console.log('token ', req.user.token)
-    const {token} = req.user.token;
+    console.log('token ', req.user.token);
+    const { token } = req.user.token;
     res.redirect('http://localhost:3000/login/succes/' + token);
   }
 
-
-
-
+  @Post('signup')
+  signupEmail(@Body() body: AuthDto) {
+    return this.authService.signup(body);
+  }
 }
